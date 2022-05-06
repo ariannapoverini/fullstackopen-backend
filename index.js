@@ -41,6 +41,14 @@ app.get("/api/persons/:id", (request, response) => {
   }
 });
 
+app.get("/api/info", (request, response) => {
+  response.status(200).send(
+    `<h3>Persons has ${persons.length} entries.</h3>
+      ${new Date()}
+      `
+  );
+});
+
 const PORT = 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
