@@ -5,6 +5,10 @@ const app = express();
 app.use(express.json());
 app.use(morgan("tiny"));
 
+morgan.token("body", (req) => JSON.stringify(req.body));
+
+app.use(morgan("tiny"));
+
 let persons = [
   {
     id: 1,
@@ -63,7 +67,7 @@ const generateId = () => {
   return maxId + 1;
 };
 
-app.post("/api/persons", (request, response) => {
+app.post("/api/persons", morgan(":body"), (request, response) => {
   const body = request.body;
   const existingNames = persons.map((person) => (names = person.name));
 

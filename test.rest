@@ -13,5 +13,6 @@ Content-Type: application/json
 
 {
     "name": "Arto Hellas",
+    "name": "Test",
     "number": "53183770"
 }
