@@ -43,7 +43,7 @@ app.get("/api/persons/:id", (request, response) => {
 
 app.get("/api/info", (request, response) => {
   response.status(200).send(
-    `<h3>Persons has ${persons.length} entries.</h3>
+    `<h3>Persons has info for ${persons.length} people.</h3>
       ${new Date()}
       `
   );
