@@ -9,6 +9,10 @@ morgan.token("body", (req) => JSON.stringify(req.body));
 
 app.use(morgan("tiny"));
 
+const cors = require("cors");
+
+app.use(cors());
+
 let persons = [
   {
     id: 1,
@@ -92,7 +96,7 @@ app.post("/api/persons", morgan(":body"), (request, response) => {
   response.json(person);
 });
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
