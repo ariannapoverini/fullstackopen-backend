@@ -9,7 +9,7 @@ if (process.argv.length < 3) {
 
 const password = process.argv[2];
 
-const url = `mongodb+srv://ariannapoverini:${password}@artohellayeah.vts50.mongodb.net/noteApp?retryWrites=true&w=majority`;
+const url = `mongodb+srv://ariannapoverini:${password}@artohellayeah.vts50.mongodb.net/phonebookApp?retryWrites=true&w=majority`;
 
 mongoose.connect(url);
 
@@ -22,7 +22,6 @@ const phoneSchema = new mongoose.Schema({
 const Person = mongoose.model("Person", phoneSchema);
 
 if (process.argv.length > 3) {
-  // no need for a loop
   const name = process.argv[3];
   const number = process.argv[4];
 
@@ -38,6 +37,7 @@ if (process.argv.length > 3) {
   });
 } else if (process.argv.length === 3) {
   Person.find({}).then((result) => {
+    console.log("Phonebook:");
     result.forEach((person) => {
       console.log(`${person.name} ${person.number}`);
     });
